@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redimenciona e corta imagens</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <br><br>
+        <h1 class="text-center">
+            Converta a imagem para o tamanho que desejar
+        </h1>
+        <form action="/convert" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" class="form-control" name="file" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-block btn-danger">
+                    Iniciar
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</html>
