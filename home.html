@@ -7,7 +7,7 @@
     <title>Redimenciona e corta imagens</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
+<body style="background-color: #010101;">
     <div class="container">
         <br><br>
         <h1 class="text-center">
@@ -15,7 +15,7 @@
         </h1>
         <form action="/convert" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <input type="file" class="form-control" name="file" required>
+                <input type="file" class="form-control" name="file" multiple required>
             </div>
             <div class="form-group">
                 <button class="btn btn-block btn-danger">
@@ -23,7 +23,17 @@
                 </button>
             </div>
         </form>
+        <div class="salas"></div>
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="./funcoes.js"></script> -->
+<!-- <script>
+    function criarLink(output){
+        const link = document.createElement("a")
+        link.setAttribute("href", "./public/downloads/" + output)
+        link.innerText = "Entrar pela internet em " + output
+        document.getElementsByTagName("body")[0].getElementsByClassName("salas")[0].appendChild(link)
+    }
+</script> -->
 </html>

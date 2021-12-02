@@ -1,0 +1,7 @@
+@echo off
+set arg1=%1
+set arg2=%arg1:~0,-4%
+ffmpeg -y -i %arg1% -vf fps=10,scale=-1:-1:flags=lanczos,palettegen %TEMP%\palette.png
+ffmpeg -i %arg1% -i %TEMP%\palette.png -filter_complex "scale=-1:-1:flags=lanczos[x];[x][1:v]paletteuse" %arg2%4.gif
+::ffmpeg -i %arg1% -i %TEMP%\palette.png -filter_complex "fps=120,scale=-1:-1:flags=lanczos[x];[x][1:v]paletteuse" %arg2%3.gif
+del /f %TEMP%\palette.png
