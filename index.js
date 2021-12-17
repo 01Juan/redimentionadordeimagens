@@ -176,7 +176,7 @@ function arqDimensoes(file, zip, zip2, name, ext, nameZip, nameZip2){
 
 // Executa o FFmpeg
 function ffmpeg(nameI, x, y, nameO, zip, zip2, nameZip, nameZip2){
-    exec(`ffmpeg -i "${nameI}" -vf scale='"iw*max\(${x}.1/iw\,${y}.1/ih\):ih*max\(${x}.1/iw\,${y}.1/ih\)"',crop=${x}.1:${y}.1:"\("in_w-out_w"\)"/2:ih*0.05 "${nameO}"`
+    exec(`ffmpeg -i "${nameI}" -vf scale='"iw*max\(${x}.1/iw,${y}.1/ih\):ih*max\(${x}.1/iw\,${y}.1/ih\)"',crop=${x}.1:${y}.1:"\("in_w-out_w"\)"/2:ih*0.05 "${nameO}"`
     // exec(`ffmpeg -i "${nameI}" -vf scale=10*"\("193-1"\)":-1 "${nameO}"`
     , (error, stdout, stderr) => {
         if (error) { console.log(`=>error: ${error}`) }
