@@ -1,15 +1,9 @@
 {
   "name": "redimentionador-de-imagens",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "devStart": "nodemon index.js"
+    "devStart": "nodemon index.js",
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "adm-zip": "^0.5.5",
     "express": "^4.17.1",

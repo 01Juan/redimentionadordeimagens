@@ -4,29 +4,82 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redimenciona e corta imagens</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Redimencionar Imagens e Vídeos</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #010101;">
+<body onload="myFunction()">
     <div class="container">
         <br><br>
         <h1 class="text-center">
-            Converta a imagem para o tamanho que desejar
+            Converta <br>
+            <font>IMAGENS E VÍDEOS</font><br>
+            para o <br>
+            tamanho que desejar
         </h1>
+
         <form action="/convert" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <input type="file" class="form-control" name="file" multiple required>
+            <!-- <div class="form-group">
+                <label for='selecao-arquivo'>Selecionar um arquivo &#187;</label>
+                <input
+                    id="selecao-arquivo"
+                    type="file"
+                    class="form-control"
+                    name="file"
+                    multiple
+                    required/>
+            </div> -->
+            <!-- <div class='form-group'>
+                <label for='selecao-arquivo'>
+                  Selecionar
+                </label>
+                <input
+                    id='selecao-arquivo'
+                    type='file'
+                    class="form-control"
+                    name="file"
+                    multiple/>
+                <span id='file-name'></span>
+            </div> -->
+            <div class='form-group'>
+                <label for='selecao-arquivo'>
+                  Selecionar
+                </label>
+                <input
+                    id='selecao-arquivo'
+                    type='file'
+                    class="form-control"
+                    name="file"
+                    multiple size="50" onchange="myFunction()">
+                <!-- <span id='file-name'></span> -->
+                <!-- <input type="file" id="myFile" multiple size="50" onchange="myFunction()"> -->
+                <p id="demo"></p>
             </div>
+
+            <input
+                class='resolucao'
+                id='resolucao'
+                type='text'
+                name="resolucao"
+                placeholder="1920x1080 460x320">
+
             <div class="form-group">
                 <button class="btn btn-block btn-danger">
-                    Iniciar
+                    Converter
                 </button>
             </div>
         </form>
-        <div class="salas"></div>
     </div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <div class='input-wrapper'>
+        <label for='input-file'>
+          Selecionar um arquivo
+        </label>
+        <input id='input-file' type='file' multiple value='' />
+        <span id='file-name'></span>
+      </div> -->
+    </body>
+    <script src="name.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 <!-- <script type="text/javascript" src="./funcoes.js"></script> -->
 <!-- <script>
     function criarLink(output){

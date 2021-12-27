@@ -23,7 +23,7 @@ let storage = multer.diskStorage({
 
 let uploads = multer({ storage: storage })
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/home.html")

@@ -1,0 +1,66 @@
+/* * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} */
+
+body {
+  background-color: #101010;
+}
+
+.text-center {
+  text-align: center;
+  color: #f88d00;
+}
+
+form {
+  background-color: #303030;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem #ff7f50;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+/* .input-wrapper label {
+  background-color: #3498db;
+  border-radius: 5px;
+  color: #fff;
+  margin: 10px;
+  padding: 6px 20px
+} */
+
+label:hover {
+  background-color: #2980b9;
+}
+
+/* Aparência que terá o seletor de arquivo */
+label {
+  background-color: #175680;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px;
+  padding: 6px 20px
+}
+
+/* .resolucao {
+  margin: 1rem;
+} */
+
+#demo, span {
+  color: #FFF;
+}
+
+.demo {
+  text-align: left;
+  /* display: flex; */
+}
+
+.btn {
+  margin: 1rem;
+}

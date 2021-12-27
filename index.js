@@ -10,9 +10,20 @@ const path = require('path')
 
 //Variáveis
 const app = express()
-const dimensoes = [[640, 400], [325, 425], [200, 190], [320, 190]]
+// const dimensoes = [[640, 400], [325, 425], [200, 190], [320, 190]]
 // const dimensoes = [[1920, -1]]
-const PORT = process.env.PORT || 3000
+
+// function resolucao() {
+//     let dimensoes = document.getElementById("resolucao");
+//     console.log(dimensoes)
+// }
+
+const PORT = process.env.PORT || 3001
+
+// app.use(express.static('public'))
+// app.use('/js', express.static(__dirname, + '/js'));
+// app.use('/css', express.static(__dirname, + '/css'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Pré configurações de pastas
 fs.mkdir('public/uploads', { recursive: true }, (err) => {
@@ -64,8 +75,12 @@ app.listen(PORT, () => {
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/home.html")
+    // res.render(__dirname + "/home.html")
 })
 
+// server.get("/", (req, res) => {
+//     return res.render("index.html", { title: "Um título"})
+// })
 // app.get('/downloads/', (req, res) => {
 //     // Calculate the size of the JS when zipped.
 //     const zip3 = new AdmZip();
@@ -148,7 +163,7 @@ async function arqName(req){
 
             const nameZip = `./public/downloads/${name}.zip`
 
-            arqDimensoes(file, zip, zip2, name, ext, nameZip, nameZip2)
+            arqDimensoes(file, zip, zip2, name, ext, nameZip, nameZip2, req)
 
             a.push(Object.assign(file, {"link": `/download/${name}.zip`}))
             // return nameZip2
@@ -158,12 +173,13 @@ async function arqName(req){
 }
 
 // Gerencia as dimensões
-function arqDimensoes(file, zip, zip2, name, ext, nameZip, nameZip2){
+function arqDimensoes(file, zip, zip2, name, ext, nameZip, nameZip2, req){
+    const dimensoes = req.body.resolucao.split(" ")
     dimensoes.map(
         dim => {
             const nameI = file.path
-            const x = dim[0]
-            const y = dim[1]
+            const x = dim.split("x")[0]
+            const y = dim.split("x")[1]
             const nameD = `${name}_${x}x${y}${ext}`
             const nameO = `./public/downloads/${nameD}`
             // const nameO = `./public/downloads/${name}${ext}`
