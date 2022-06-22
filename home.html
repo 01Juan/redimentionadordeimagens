@@ -50,7 +50,19 @@
                     type='file'
                     class="form-control"
                     name="file"
-                    multiple size="50" onchange="myFunction()">
+                    accept="
+                            .jpeg,
+                            .jpg,
+                            .pjpeg,
+                            .png,
+                            .gif,
+                            .avif,
+                            .webp,
+                            .apng,
+                            .tif"
+                    multiple size="50"
+                    onchange="myFunction()"
+                    required>
                 <!-- <span id='file-name'></span> -->
                 <!-- <input type="file" id="myFile" multiple size="50" onchange="myFunction()"> -->
                 <p id="demo"></p>
@@ -61,7 +73,10 @@
                 id='resolucao'
                 type='text'
                 name="resolucao"
-                placeholder="1920x1080 460x320">
+                placeholder="1920x1080 460x320"
+                value="640x400 325x425 200x190 320x190"
+                pattern="([0-9]{0,}x[0-9]{0,} ?).{1,}"
+                required>
 
             <div class="form-group">
                 <button class="btn btn-block btn-danger">

@@ -54,8 +54,12 @@ const uploads = multer({
             "image/gif",
             "image/avif",
             "image/webp",
-            "image/apng"
+            "image/apng",
+            "image/tiff",
+            "image/*"
         ]
+
+        console.log(file.mimetype)
 
         if ( allowedMimes.includes(file.mimetype)) {
             cb(null, true)
@@ -95,7 +99,7 @@ app.get('/', (req, res) => {
 //     res.send(__dirname + "/public/downloads/tudo.zip")
 // })
 
-app.post("/convert", uploads.array("file", 15),(req, res) => {
+app.post("/convert", uploads.array("file", 30),(req, res) => {
     if (req.files) {
         arquivos(req, res)
     }
@@ -159,7 +163,8 @@ async function arqName(req){
         file => {
             const zip = new AdmZip()
             const name = path.parse(file.filename).name
-            const ext = path.extname(file.filename)
+            // const ext = path.extname(file.filename)
+            const ext = ".jpg"
 
             const nameZip = `./public/downloads/${name}.zip`
 
@@ -180,7 +185,11 @@ function arqDimensoes(file, zip, zip2, name, ext, nameZip, nameZip2, req){
             const nameI = file.path
             const x = dim.split("x")[0]
             const y = dim.split("x")[1]
-            const nameD = `${name}_${x}x${y}${ext}`
+            let nameD = `${name}${ext}`
+            if (dimensoes.length > 1) {
+                nameD = `${name}_${x}x${y}${ext}`
+            }
+
             const nameO = `./public/downloads/${nameD}`
             // const nameO = `./public/downloads/${name}${ext}`
             
@@ -193,21 +202,50 @@ function arqDimensoes(file, zip, zip2, name, ext, nameZip, nameZip2, req){
 // Executa o FFmpeg
 function ffmpeg(nameI, x, y, nameO, zip, zip2, nameZip, nameZip2){
     // exec(`ffmpeg -i "${nameI}" -vf scale='iw*max(${x}.1/iw\,${y}.1/ih):ih*max(${x}.1/iw\,${y}.1/ih)',crop=${x}.1:${y}.1:(in_w-out_w)/2:ih*0.05 "${nameO}"`
-    exec(`ffmpeg -i "${nameI}" -vf "scale='iw*max(${x}.1/iw\,${y}.1/ih)':'ih*max(${x}.1/iw\,${y}.1/ih)'","crop='${x}.1':'${y}.1':'(in_w-out_w)/2':'ih*0.05'" "${nameO}"`
-    // exec(`ffmpeg -i "${nameI}" -vf "scale='1920':'-1'" "${nameO}"`
-    , (error, stdout, stderr) => {
-        if (error) { console.log(`=>error: ${error}`) }
+    if (y == 0) {
+        console.log("Estou no Y")
+        // exec(`ffmpeg -i "${nameI}" -vf "scale='iw*max(${x}.1/iw\,${y}.1/ih)':'ih*max(${x}.1/iw\,${y}.1/ih)'","crop='${x}.1':'${y}.1':'(in_w-out_w)/2':'ih*0.05'" "${nameO}"`
+        exec(`ffmpeg -i "${nameI}" -vf "scale='${x}':'-1'" "${nameO}"`
+        , (error, stdout, stderr) => {
+            if (error) { console.log(`=>error Y: ${error}`) }
 
-        // zip.addLocalFile(nameO)
-        // zip.writeZip(nameZip)
-        // zip2.toBuffer(nameO);
-        // res.send(data);
-        zip2.addLocalFile(nameO)
-        // zip2.addFile(nameO)
-        zip2.writeZip(nameZip2)
-        fs.unlinkSync(nameO)
-        // return zip2
-    })
+            // zip.addLocalFile(nameO)
+            // zip.writeZip(nameZip)
+            // zip2.toBuffer(nameO);
+            // res.send(data);
+            zip2.addLocalFile(nameO)
+            // zip2.addFile(nameO)
+            zip2.writeZip(nameZip2)
+            fs.unlinkSync(nameO)
+            // return zip2
+        })
+    } else if (x == 0) {
+        console.log("Estou no X")
+        // exec(`ffmpeg -i "${nameI}" -vf "scale='iw*max(${x}.1/iw\,${y}.1/ih)':'ih*max(${x}.1/iw\,${y}.1/ih)'","crop='${x}.1':'${y}.1':'(in_w-out_w)/2':'ih*0.05'" "${nameO}"`
+        exec(`ffmpeg -i "${nameI}" -vf "scale='-1':'${y}'" "${nameO}"`
+        , (error, stdout, stderr) => {
+            if (error) { console.log(`=>error X: ${error}`) }
+
+            // zip.addLocalFile(nameO)
+            // zip.writeZip(nameZip)
+            // zip2.toBuffer(nameO);
+            // res.send(data);
+            zip2.addLocalFile(nameO)
+            // zip2.addFile(nameO)
+            zip2.writeZip(nameZip2)
+            fs.unlinkSync(nameO)
+            // return zip2
+        })
+    } else {
+        console.log("Estou no X e Y")
+        exec(`ffmpeg -i "${nameI}" -vf "scale='iw*max(${x}.1/iw\,${y}.1/ih)':'ih*max(${x}.1/iw\,${y}.1/ih)'","crop='${x}.1':'${y}.1':'(in_w-out_w)/2':'ih*0.05'" "${nameO}"`
+        , (error, stdout, stderr) => {
+            if (error) { console.log(`=>error X e Y: ${error}`) }
+            zip2.addLocalFile(nameO)
+            zip2.writeZip(nameZip2)
+            fs.unlinkSync(nameO)
+        })
+    }
 }
 
 // Quando desconectar

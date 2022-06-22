@@ -58,7 +58,15 @@ label {
 
 .demo {
   text-align: left;
-  /* display: flex; */
+  /* display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-direction: column; */
+  /* height: 30rem; */
+}
+
+span {
+  width: max-content;
 }
 
 .btn {

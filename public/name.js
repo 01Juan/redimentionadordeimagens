@@ -20,7 +20,7 @@ function myFunction(){
         txt += "<strong>" + (i+1) + ". </strong>";
         let file = x.files[i];
         if ('name' in file) {
-          txt += file.name + " <br>"
+          txt += file.name + " <br>" 
           // txt += file.name
           document.getElementById("demo").setAttribute("class", "demo");
         }

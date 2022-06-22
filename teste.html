@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3001/ -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redimencionar Imagens e Vídeos</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="public/style.css"></head>
+<body onload="myFunction()">
+    <div class="container">
+        <br><br>
+        <h1 class="text-center">
+            Converta <br>
+            <font>IMAGENS E VÍDEOS</font><br>
+            para o <br>
+            tamanho que desejar
+        </h1>
+
+        <form action="http://localhost:3001/convert" method="post" enctype="multipart/form-data">
+            <!-- <div class="form-group">
+                <label for='selecao-arquivo'>Selecionar um arquivo &#187;</label>
+                <input
+                    id="selecao-arquivo"
+                    type="file"
+                    class="form-control"
+                    name="file"
+                    multiple
+                    required/>
+            </div> -->
+            <!-- <div class='form-group'>
+                <label for='selecao-arquivo'>
+                  Selecionar
+                </label>
+                <input
+                    id='selecao-arquivo'
+                    type='file'
+                    class="form-control"
+                    name="file"
+                    multiple/>
+                <span id='file-name'></span>
+            </div> -->
+            <div class="form-group">
+                <label for="selecao-arquivo">
+                  Selecionar
+                </label>
+                <input id="selecao-arquivo" type="file" class="form-control" name="file" accept="
+                            .jpeg,
+                            .jpg,
+                            .pjpeg,
+                            .png,
+                            .gif,
+                            .avif,
+                            .webp,
+                            .apng" multiple="" size="50" onchange="myFunction()" required="">
+                <!-- <span id='file-name'></span> -->
+                <!-- <input type="file" id="myFile" multiple size="50" onchange="myFunction()"> -->
+                <p id="demo" class="demo">
+                  <span><strong>1. </strong>302.jpg </span>
+                  <span><strong>2. </strong>Amor_de_4_-_ep1.jpg </span>
+                  <span><strong>3. </strong>Amor_de_4_-_ep2.jpg </span>
+                  <span><strong>4. </strong>ana-sem-titulo.png </span>
+                  <span><strong>5. </strong>boca_de_ouro.jpg </span>
+                  <span><strong>6. </strong>Canastra-Suja1.jpg </span>
+                  <span><strong>7. </strong>carmen.jpg </span>
+                  <span><strong>8. </strong>o_pais_do_cinema_três_verões.jpg </span>
+                  <span><strong>9. </strong>o-som-do-vinil.jpg </span>
+                  <span><strong>10. </strong>Parasite.jpeg </span>
+                  <span><strong>11. </strong>por_que_voce_nao_chora.jpeg </span>
+                  <span><strong>12. </strong>pornolandia.jpg </span>
+                  <span><strong>13. </strong>SOBREPOSTAS_entrevistas-112.jpg </span>
+                  <span><strong>14. </strong>transmissão.jpg </span>
+                  <span><strong>15. </strong>tres_veroes.jpeg </span></p>
+            </div>
+
+            <input class="resolucao" id="resolucao" type="text" name="resolucao" placeholder="1920x1080 460x320" pattern="([0-9]{1,}x[0-9]{1,} ?).{1,}" required="">
+
+            <div class="form-group">
+                <button class="btn btn-block btn-danger">
+                    Converter
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- <div class='input-wrapper'>
+        <label for='input-file'>
+          Selecionar um arquivo
+        </label>
+        <input id='input-file' type='file' multiple value='' />
+        <span id='file-name'></span>
+      </div> -->
+    
+    <script src="./teste_files/name.js.download"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="./funcoes.js"></script> -->
+<!-- <script>
+    function criarLink(output){
+        const link = document.createElement("a")
+        link.setAttribute("href", "./public/downloads/" + output)
+        link.innerText = "Entrar pela internet em " + output
+        document.getElementsByTagName("body")[0].getElementsByClassName("salas")[0].appendChild(link)
+    }
+</script> -->
+<div data-v-e9185a48=""><!----></div></body></html>
